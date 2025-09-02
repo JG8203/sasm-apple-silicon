@@ -11,7 +11,8 @@ var tabs *container.AppTabs = nil
 
 // New creates the gui
 func New(a fyne.App, w fyne.Window) fyne.CanvasObject {
-	c.New()
+	// Initialize Docker connection asynchronously to avoid blocking the GUI
+	go c.New()
 
 	tabs = container.NewAppTabs(
 		container.NewTabItem("Launch", newLaunchTab(a, w)),

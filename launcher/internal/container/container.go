@@ -229,8 +229,8 @@ func (c *LaunchableContainer) WaitForDockerDaemon() error {
 			Type: LogMessage,
 			Data: fmt.Sprintf("Waiting for the docker daemon to start, tried %d times to connect", retryCount),
 		})
-		_, err = dockerClient.ContainerList(ctx, types.ContainerListOptions{})
 		time.Sleep(time.Second * 5)
+		_, err = dockerClient.ContainerList(ctx, types.ContainerListOptions{})
 	}
 
 	return err
